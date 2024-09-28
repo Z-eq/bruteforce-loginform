@@ -59,7 +59,7 @@ def run_automatic_login():
             username_field = login_form.get('username_field')
             password_field = login_form.get('password_field')
 
-            # Attempt login with each set of credentials
+            # Attempt login with set of credentials
             for username, password in credentials:
                 logger.info(f"Attempting login with {username}:{password}")
                 response = login(form_action, username, password, username_field, password_field)  # Use the form action URL
@@ -81,7 +81,7 @@ def manual_login():
     logger.info(f"Attempting manual login with {username}:{password}")
     
     try:
-        # Find the login form to get the action URL again
+        # Find the login form to get the action URL
         response = requests.get(login_url, verify=False)
         response.raise_for_status()  # Raise an error for bad responses
         logger.info("Page loaded with status code: 200")
@@ -112,5 +112,4 @@ def main():
     else:
         print("Invalid choice. Exiting.")
 
-# Directly call the main function
 main()
